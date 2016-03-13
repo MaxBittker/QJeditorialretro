@@ -46,7 +46,7 @@ function scrapeArticle(url, index) {
         c--
         console.log(c,index,title)
         if (c === 0 && index === 64) {
-            fs.writeFile("output.js","var data = "+ JSON.stringify(ArticleInfo), (error) => {
+            fs.writeFile("output.js","module.exports ="+ JSON.stringify(ArticleInfo), (error) => {
                 if (err) throw err
             })
         }

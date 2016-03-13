@@ -58,5 +58,6 @@ function graph(data){
 
 document.getElementById("btn").addEventListener("click", function(){
   let input = document.getElementById("kw").value;
-  search(input.split(",").map(word=>word.trim()))
+  let words = _.filter(input.split(",").map(word=>word.trim()),word=>word!=="")
+  search(words)
 });

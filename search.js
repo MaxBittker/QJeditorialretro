@@ -21,4 +21,3 @@ function search(keywords){
 
 // search(["mental health", "anxiety"])
 // search(["race", "racism"])
-search(["assault", "rape"])
