@@ -4,7 +4,7 @@ let cheerio = require('cheerio')
 let request = require('request')
 
 const baseUrl = 'http://www.queensjournal.ca/'
-const c = 0
+let c = 0
 let ArticleInfo = []
 
 function scrapeIndex(i) {
