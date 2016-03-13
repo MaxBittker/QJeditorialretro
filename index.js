@@ -1,4 +1,7 @@
 "use strict"
+
+const blanks = _.map(_.range(2004, 2016), yr=>{return{year:yr,count:0}})
+var drawn = false
 function search(keywords){
 
   let re = new RegExp(keywords.join("|"),"i");
@@ -14,6 +17,10 @@ function search(keywords){
   console.log(grouped)
   let html = _.map(grouped,(year=>yearComponent(year)))
   document.getElementById("results").innerHTML = html.join("")
+
+  graph(_.map(grouped,yearObj=>{return {year: yearObj[0].year,
+                                         count: yearObj.length}
+                                      }))
 }
 
 function buttonHandle(){
@@ -29,4 +36,18 @@ function yearComponent(yearObj){
 function editorialComponent(ed){
   let str = "<a href=http://www.queensjournal.ca/"+ed.url +">"+ed.title+"</a>"
   return str
+}
+
+function graph(data){
+  data =_.unionWith(data,blanks,(a,b)=>a.year===b.year).sort((a,b)=>a.year-b.year)
+
+  let bars = d3.select(".chart")
+              .selectAll("div")
+              .data(data);
+
+  bars.enter().append("div");
+  bars.style("width", function(d) { return d.count * 20 + "px"; })
+      .text(function(d) { return d.year; });
+  bars.exit().remove()
+
 }
