@@ -1,4 +1,8 @@
 "use strict"
+let _ = require("lodash")
+let d3 = require("d3")
+let data = require("./output.js")
+
 
 const blanks = _.map(_.range(2004, 2016), yr=>{return{year:yr,count:0}})
 var drawn = false
@@ -23,10 +27,10 @@ function search(keywords){
                                       }))
 }
 
-function buttonHandle(){
-  let input = document.getElementById("kw").value;
-  search(input.split(",").map(word=>word.trim()))
-}
+// function buttonHandle(){
+//   let input = document.getElementById("kw").value;
+//   search(input.split(",").map(word=>word.trim()))
+// }
 
 function yearComponent(yearObj){
   let str = "<h5>"+yearObj[0].year+"</h5>"
@@ -51,3 +55,8 @@ function graph(data){
   bars.exit().remove()
 
 }
+
+document.getElementById("btn").addEventListener("click", function(){
+  let input = document.getElementById("kw").value;
+  search(input.split(",").map(word=>word.trim()))
+});
