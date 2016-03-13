@@ -27,6 +27,6 @@ function yearComponent(yearObj){
   return str
 }
 function editorialComponent(ed){
-  let str = "<a href="+ed.url +">"+ed.title+"</a>"
+  let str = "<a href=http://www.queensjournal.ca/"+ed.url +">"+ed.title+"</a>"
   return str
 }
