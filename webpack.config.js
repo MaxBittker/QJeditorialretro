@@ -1,8 +1,8 @@
 module.exports = {
-    entry: "./index.js",
+    entry: "./timeline.js",
     output: {
         path: __dirname,
-        filename: "bundle.js"
+        filename: "tbundle.js"
     },
     module: {
     loaders: [
